@@ -11,7 +11,7 @@ variable "glueops_codespaces_container_tag" {
   type = string
 }
 
-source "amazon-ebs" "example" {
+source "amazon-ebs" "cde" {
   access_key    = "${var.aws_access_key}"
   secret_key    = "${var.aws_secret_key}"
   region        = "us-west-2"
@@ -31,7 +31,7 @@ source "amazon-ebs" "example" {
 }
 
 build {
-  sources = ["source.amazon-ebs.example"]
+  sources = ["source.amazon-ebs.cde"]
 
   provisioner "file" {
     source      = ".glueopsrc"
