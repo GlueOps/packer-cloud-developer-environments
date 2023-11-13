@@ -12,8 +12,8 @@ variable "glueops_codespaces_container_tag" {
 }
 
 source "amazon-ebs" "example" {
-  #access_key    = "${var.aws_access_key}"
-  #secret_key    = "${var.aws_secret_key}"
+  access_key    = "${var.aws_access_key}"
+  secret_key    = "${var.aws_secret_key}"
   region        = "us-west-2"
   source_ami    = "ami-0efcece6bed30fd98" // Use a valid base AMI ID
   instance_type = "t3a.large"
