@@ -27,7 +27,7 @@ source "amazon-ebs" "cde" {
   ami_virtualization_type = "hvm"
   ami_regions             = ["us-west-2", "us-east-1"]
 
-  ami_name = "{{timestamp}}-${var.glueops_codespaces_container_tag}"
+  ami_name = "${var.glueops_codespaces_container_tag}-{{timestamp}}"
 }
 
 build {
