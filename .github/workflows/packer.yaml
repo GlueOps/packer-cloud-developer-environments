@@ -13,7 +13,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Packer GitHub Actions
+      - name: Packer Init
+        uses: hashicorp/packer-github-actions@v0.2.0
+        with:
+          # command to execute
+          command: init
+          target: aws.pkr.hcl
+          version: 1.9.4
+
+      - name: Packer Build
         uses: hashicorp/packer-github-actions@v0.2.0
         with:
           # command to execute
