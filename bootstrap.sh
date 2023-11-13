@@ -8,6 +8,8 @@ echo "source /home/ubuntu/.glueopsrc" >> /home/ubuntu/.bashrc
 
 #install docker per instructions: https://docs.docker.com/engine/install/ubuntu/ 
 sudo apt-get update
+#https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-connect-set-up.html
+sudo apt-get install ec2-instance-connect -y
 sudo apt-get install ca-certificates curl gnupg -y
 sudo install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
