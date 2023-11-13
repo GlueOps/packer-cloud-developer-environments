@@ -13,17 +13,16 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Packer Init
-        uses: hashicorp/packer-github-actions@v0.2.0
+      - name: Setup `packer`
+        uses: hashicorp/setup-packer@main
+        id: setup
         with:
-          # command to execute
-          command: init
-          target: aws.pkr.hcl
+          version: 1.9.4
 
-      - name: Packer Build
-        uses: hashicorp/packer-github-actions@v0.2.0
-        with:
-          # command to execute
-          command: build
-          target: aws.pkr.hcl
-          arguments: -var aws_access_key="${{ secrets.aws_access_key }}" -var aws_secret_key="${{ secrets.aws_secret_key }}" -var glueops_codespaces_container_tag="v0.32.0-alpha4"
+      - name: Run `packer init`
+        id: init
+        run: "packer init ./aws.pkr.hcl"
+
+      - name: Run `packer validate`
+        id: validate
+        run: 'packer build ./aws.pkr.hcl -var aws_access_key="${{ secrets.aws_access_key }}" -var aws_secret_key="${{ secrets.aws_secret_key }}" -var glueops_codespaces_container_tag="v0.32.0-alpha4"'
