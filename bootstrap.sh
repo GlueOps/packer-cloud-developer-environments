@@ -5,7 +5,7 @@ set -e
 
 # add custom sripts to quickly start a cloud developer environment
 echo "source /home/ubuntu/.glueopsrc" >> /home/ubuntu/.bashrc
-
+echo 'fs.inotify.max_user_instances=1024' | sudo tee -a /etc/sysctl.conf
 #install docker per instructions: https://docs.docker.com/engine/install/ubuntu/ 
 sudo apt-get update
 #https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-connect-set-up.html
