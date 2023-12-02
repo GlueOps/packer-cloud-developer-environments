@@ -23,3 +23,4 @@ sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin tmux jq -y
 sudo groupadd -f docker
 sudo usermod -aG docker $USER
+echo 1024 | sudo tee /proc/sys/fs/inotify/max_user_instances
