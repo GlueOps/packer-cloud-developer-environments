@@ -11,6 +11,10 @@ sudo apt-get update
 #https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-connect-set-up.html
 #sudo apt-get install ec2-instance-connect -y
 sudo apt-get install ca-certificates curl gnupg -y
+
+#install security fixes https://ubuntu.com/blog/3-ways-to-apply-security-patches-in-linux
+sudo apt-get -s dist-upgrade | grep "^Inst" | grep -i securi | awk -F " " {'print $2'} | xargs sudo apt-get install -y
+
 sudo install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 sudo chmod a+r /etc/apt/keyrings/docker.gpg
