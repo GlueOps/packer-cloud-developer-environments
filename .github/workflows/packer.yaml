@@ -14,10 +14,10 @@ jobs:
       - uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b # v4
 
       - name: Setup `packer`
-        uses: hashicorp/setup-packer@main
+        uses: hashicorp/setup-packer@v3.1.0
         id: setup
         with:
-          version: 1.9.4
+          version: 1.10.3
 
       - name: Run `packer init`
         id: init
@@ -25,4 +25,4 @@ jobs:
 
       - name: Run `packer build`
         id: build
-        run: packer build -var aws_access_key=${{ secrets.AWS_ACCESS_KEY }} -var aws_secret_key=${{ secrets.AWS_SECRET_KEY }} -var glueops_codespaces_container_tag=v0.37.0 aws.pkr.hcl
+        run: packer build -var aws_access_key=${{ secrets.AWS_ACCESS_KEY }} -var aws_secret_key=${{ secrets.AWS_SECRET_KEY }} -var glueops_codespaces_container_tag=v0.42.0 aws.pkr.hcl
