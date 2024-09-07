@@ -1,6 +1,4 @@
-# This is a basic workflow to help you get started with Actions
-
-name: Packer build AMI for Cloud Development Environment
+name: Packer build Hetzner
 
 on:
   push:
@@ -16,11 +14,11 @@ jobs:
         id: setup
         with:
           version: 1.10.3
-          
+
       - name: Run `packer init`
         id: init
         run: packer init hetzner.pkr.hcl
 
-        - name: Run `packer build`
+      - name: Run `packer build`
         id: build
         run: packer build -var HCLOUD_TOKEN=${{ secrets.HCLOUD_TOKEN }} -var glueops_codespaces_container_tag=v0.48.0 hetzner.pkr.hcl
