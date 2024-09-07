@@ -16,7 +16,7 @@ jobs:
         id: setup
         with:
           version: 1.10.3
-
+          
       - name: Run `packer init`
         id: init
         run: packer init hetzner.pkr.hcl
