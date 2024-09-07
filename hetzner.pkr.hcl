@@ -4,6 +4,11 @@ variable "base_image" {
   default = "debian-12"
 }
 
+variable "server_name" {
+  type    = string
+  default = "image"
+}
+
 variable "version" {
   type    = string
   default = "v1.0.0"
@@ -17,6 +22,7 @@ source "hcloud" "base-amd64" {
   image         = var.base_image
   location      = "nbg1"
   server_type   = "cx11"
+  server_name   = "{var.server_name}-${version}"
   ssh_username  = "root"
   snapshot_name = "${var.version}"
   snapshot_labels = {
