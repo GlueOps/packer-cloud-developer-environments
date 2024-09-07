@@ -24,4 +24,4 @@ jobs:
 
       - name: Run `packer build`
         id: build
-        run: packer build -var glueops_codespaces_container_tag=v0.48.0 hetzner.pkr.hcl
+        run: packer build -var glueops_codespaces_container_tag=v0.48.0 -var version=v0.8.0 hetzner.pkr.hcl
