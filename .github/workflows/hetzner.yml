@@ -1,0 +1,22 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Packer build AMI for Cloud Development Environment
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+
+      - name: Setup `packer`
+        uses: hashicorp/setup-packer@1aa358be5cf73883762b302a3a03abd66e75b232 # v3.1.0
+        id: setup
+        with:
+          version: 1.10.3
+
+      - name: Run `packer init`
+        id: init
+        run: packer init aws.pkr.hcl
