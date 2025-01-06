@@ -26,8 +26,7 @@ source "amazon-ebs" "cde" {
   }
   ami_virtualization_type = "hvm"
   ami_regions             = ["us-west-2", "us-east-2", "ap-south-1", "eu-central-1" ]
-
-  ami_name = "${var.glueops_codespaces_container_tag}-{{timestamp}}"
+  ami_name                = "${var.glueops_codespaces_container_tag}-{{timestamp}}"
 }
 
 build {
@@ -42,6 +41,7 @@ build {
     source      = "bootstrap.sh"
     destination = "/tmp/glueops-bootstrap.sh"
   }
+
   provisioner "shell" {
     inline = [
       "sudo /tmp/glueops-bootstrap.sh"
@@ -55,9 +55,6 @@ build {
   }
 
 }
-
-
-
 
 packer {
   required_plugins {
